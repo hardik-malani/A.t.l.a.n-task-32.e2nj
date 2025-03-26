@@ -1,29 +1,38 @@
 import React from 'react';
 import styles from './TableDisplay.module.css';
+import { useCSVData } from '../../hooks/useCSVData';
 
 const TableDisplay: React.FC = () => {
-  // Dummy data for demonstration
-  const dummyData = [
-    { id: 1, name: 'Alice', age: 30 },
-    { id: 2, name: 'Bob', age: 25 },
-  ];
+
+  const { data, loading, error } = useCSVData('/orders.csv');
+
+  if (loading) {
+    return <div>Loading CSV data...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading CSV data: {error}</div>;
+  }
+
+  if (data.length === 0) {
+    return <div>No data available</div>;
+  }
 
   return (
     <div className={styles.container}>
       <table className={styles.table}>
         <thead>
           <tr>
-            {dummyData.length > 0 &&
-              Object.keys(dummyData[0]).map((key) => (
-                <th key={key}>{key}</th>
-              ))}
+            {Object.keys(data[0]).map((key) => (
+              <th key={key}>{key}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {dummyData.map((row) => (
-            <tr key={row.id}>
-              {Object.values(row).map((value, index) => (
-                <td key={index}>{value}</td>
+          {data.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {Object.values(row).map((value, colIndex) => (
+                <td key={colIndex}>{value}</td>
               ))}
             </tr>
           ))}
