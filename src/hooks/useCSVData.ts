@@ -17,12 +17,10 @@ export const useCSVData = (csvUrl: string) => {
       header: true,
       skipEmptyLines: true,
       complete: (result) => {
-        console.log('CSV Parsing complete. Data:', result.data);
         setData(result.data as CSVData[]);
         setLoading(false);
       },
       error: (err) => {
-        console.error('CSV Parsing error:', err);
         setError(err.message);
         setLoading(false);
       },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './QueryEditor.module.css';
+import { Play } from 'lucide-react';
 
 const QueryEditor: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -12,7 +13,8 @@ const QueryEditor: React.FC = () => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Write your SQL query here..."
       />
-      <button className={styles.button} onClick={() => console.log("Executing query:", query)}>
+      <button className={styles.button} onClick={() => console.log('Executing query:', query)}>
+        <Play size={16} />
         Execute Query
       </button>
     </div>

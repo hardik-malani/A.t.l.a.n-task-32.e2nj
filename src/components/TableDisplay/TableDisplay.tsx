@@ -7,9 +7,7 @@ const ROW_HEIGHT = 35;
 const TABLE_HEIGHT = 600;
 
 const TableDisplay: React.FC = () => {
-  
   const { data, loading, error } = useCSVData('/orders.csv');
-
   const columns = useMemo(() => {
     if (data.length > 0) {
       return Object.keys(data[0]);
@@ -31,7 +29,6 @@ const TableDisplay: React.FC = () => {
 
   const Row = ({ index, style }: ListChildComponentProps) => {
     const rowData = data[index];
-
     return (
       <div className={styles.row} style={style}>
         {columns.map((colKey) => (
@@ -52,12 +49,7 @@ const TableDisplay: React.FC = () => {
           </div>
         ))}
       </div>
-      <List
-        height={TABLE_HEIGHT}
-        itemCount={data.length}
-        itemSize={ROW_HEIGHT}
-        width="100%"
-      >
+      <List height={TABLE_HEIGHT} itemCount={data.length} itemSize={ROW_HEIGHT} width="100%">
         {Row}
       </List>
     </div>

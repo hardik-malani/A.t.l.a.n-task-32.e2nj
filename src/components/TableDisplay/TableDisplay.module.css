@@ -1,60 +1,65 @@
 .container {
-    overflow-x: auto;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th,
-  .table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .container {
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-  }
-  
-  /* Sticky Header Row */
-  .headerRow {
-    display: flex;
-    position: sticky;
-    top: 0;
-    background-color: #444;
-    color: #fff;
-    font-weight: bold;
-    z-index: 1;
-  }
-  
-  .headerCell {
-    flex: 1; 
-    padding: 8px;
-    border-right: 1px solid #888;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .row {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .cell {
-    flex: 1; 
-    padding: 8px;
-    border-right: 1px solid #eee;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .row:last-child {
-    border-bottom: none;
-  }
-  
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-secondary);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+.headerRow {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 500;
+  z-index: 1;
+  border-bottom: 1px solid var(--border-color-hover);
+}
+.headerCell {
+  flex: 1;
+  padding: 10px 8px;
+  border-right: 1px solid var(--border-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerCell:last-child {
+  border-right: none;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.row:hover {
+  background-color: var(--bg-hover);
+}
+
+.cell {
+  flex: 1;
+  padding: 8px;
+  border-right: 1px solid var(--border-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cell:last-child {
+  border-right: none;
+}
+
+.row:last-child {
+  border-bottom: none;
+}

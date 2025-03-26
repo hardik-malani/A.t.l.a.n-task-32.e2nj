@@ -1,23 +1,34 @@
-.home {
-  display: flex;
-  height: 100vh;
-  color: inherit;
-  overflow: hidden;
-}
-.sidebar {
-  width: 250px;
-  background-color: inherit;
-  border-right: 1px solid #444;
+.container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.contentArea {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: inherit;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
   overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .sidebarTitle {
   margin: 0 0 10px;
   font-size: 18px;
-  border-bottom: 1px solid #444;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-color-hover);
   padding-bottom: 5px;
 }
 
@@ -28,52 +39,86 @@
 }
 
 .tableItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px;
   margin: 4px 0;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
   border-radius: 4px;
 }
 
 .tableItem:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tableIcon {
+  flex-shrink: 0;
 }
 
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.topHeader {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  border-bottom: 1px solid #444;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-bg);
+  backdrop-filter: blur(5px);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .appTitle {
   margin: 0;
   font-size: 20px;
+  font-weight: 500;
+}
+
+.appTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+}
+
+.appIcon {
+  color: var(--primary-accent);
 }
 
 .workspace {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-
 .querySection {
-  flex: 0.3;  /* 30% height */
-  padding: 10px;
-  border-bottom: 1px solid #444;
+  flex: 0 0 auto;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: inset 0 -2px 6px var(--box-shadow-color);
 }
 
 .resultSection {
-  flex: 0.7;
-  padding: 10px;
-  overflow: auto;
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  transition: overflow-y 0.1s ease-in-out;
 }
