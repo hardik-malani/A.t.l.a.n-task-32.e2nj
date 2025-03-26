@@ -25,3 +25,39 @@ Develop a highly optimized, web-based, dummy SQL query application that simulate
 ## Architecture Diagram
 
 ![Architecture Diagram](https://i.imgur.com/6kugYOC.png)
+
+## Technical Stack
+
+*   **Framework:** React 19+ (with TypeScript)
+*   **Build Tool:** Vite
+*   **Styling:** CSS Modules & Global CSS with CSS Variables
+*   **Data Parsing:** PapaParse (executed within a Web Worker)
+*   **UI Virtualization:** `react-window`
+*   **Icons:** `lucide-react`
+*   **Core Web APIs:** Web Workers API
+*   **React Features:**
+    *   Hooks (`useState`, `useEffect`, `useContext`, `useCallback`, `useMemo`)
+    *   Code Splitting (`React.lazy`, `Suspense`)
+    *   Memoization (`React.memo`)
+
+## Performance Optimizations & Metrics
+
+Achieving optimal performance was a primary goal, resulting in high Lighthouse scores (**100 Performance**) through several key techniques:
+
+*   **Web Workers for CSV Parsing:** Offloading heavy CSV parsing (`PapaParse`) to a background thread prevents the main UI thread from freezing, ensuring responsiveness even with large datasets.
+*   **Code Splitting (`React.lazy` & `Suspense`):** Components like `TableDisplay`, `QueryEditor`, and `ThemeToggle` are loaded only when needed, minimizing the initial JavaScript bundle size and drastically improving First Contentful Paint (FCP).
+*   **Asynchronous Font Loading:** Google Fonts CSS is loaded non-blockingly using `rel="preload"`, preventing font requests from delaying the initial render (FCP).
+*   **UI Virtualization (`react-window`):** Only the visible rows of the data table are rendered, enabling smooth scrolling and efficient handling of thousands of rows without performance degradation.
+*   **Memoization (`React.memo`, `useCallback`):** Components and callbacks are memoized to prevent unnecessary re-renders, optimizing updates after the initial load.
+*   **Deferred Initial Data Load:** The application starts without loading any table data. Data fetching and parsing are initiated only upon user interaction (selecting a table), ensuring the fastest possible initial paint.
+
+*(Achieved metrics based on Lighthouse run on production build)*
+*   **Performance Score:** **100**
+*   **First Contentful Paint (FCP):** **~0.4s**
+*   **Accessibility:** 91
+*   **Largest Contentful Paint (LCP):** 0.5 s
+*   **Total Blocking Time (TBT):** 0 ms
+
+## Author
+
+* Hardik Malani
