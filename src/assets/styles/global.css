@@ -1,12 +1,9 @@
-
-/* dark and light mode */
 body.dark {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  body.light {
-    background-color: #fff;
-    color: #000;
-  }
-  
+  background-color: #2f2f2f;
+  color: #fff;
+}
+
+body.light {
+  background-color: #f0f0f0;
+  color: #000;
+}
