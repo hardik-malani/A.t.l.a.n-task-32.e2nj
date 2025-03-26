@@ -6,6 +6,8 @@
   overflow: hidden;
   position: relative;
   background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column; 
 }
 
 .table {
@@ -23,6 +25,7 @@
   font-weight: 500;
   z-index: 1;
   border-bottom: 1px solid var(--border-color-hover);
+  flex-shrink: 0;
 }
 .headerCell {
   flex: 1;
@@ -36,6 +39,12 @@
 .headerCell:last-child {
   border-right: none;
 }
+
+.listContainer {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
 
 .row {
   display: flex;
@@ -54,6 +63,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.85rem;
 }
 
 .cell:last-child {
@@ -62,4 +72,22 @@
 
 .row:last-child {
   border-bottom: none;
+}
+
+.statusMessage {
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.errorMessage {
+  color: #ff6b6b; 
+  font-style: normal;
+  font-weight: 500;
+}
+
+.container > div:last-child {
+    flex-grow: 1;
 }

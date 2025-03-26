@@ -4,12 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Increase SEO rating -->
+    <meta name="description" content="A simple web-based SQL runner application to query local CSV files."/>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Asynchronously load the Google Fonts CSS -> Boost Performance -->
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Let's SQL</title>
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet"
+        type="text/css"
+      >
+    </noscript>
+
+    <title>SQL Runner - Atlan Task</title>
   </head>
   <body>
     <div id="root"></div>
