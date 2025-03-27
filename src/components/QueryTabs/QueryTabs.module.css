@@ -1,0 +1,87 @@
+.tabsContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+.tabsContainer::-webkit-scrollbar {
+  height: 4px;
+}
+.tabsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tabsContainer::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 2px;
+}
+.tabsContainer::-webkit-scrollbar-thumb:hover {
+   background: var(--scrollbar-thumb-hover);
+}
+
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tab:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.activeTab {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: 500;
+  border-color: var(--border-color);
+}
+
+.closeButton {
+  margin-left: 8px;
+  padding: 2px;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.closeButton:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+  opacity: 1;
+}
+
+.addButton {
+  padding: 4px;
+  margin-left: 4px;
+  line-height: 1;
+  background: none;
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+   background-color: var(--bg-hover);
+   color: var(--text-primary);
+   border-style: solid;
+}

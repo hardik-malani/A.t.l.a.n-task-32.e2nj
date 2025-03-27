@@ -218,3 +218,14 @@
 .sidebarCollapsed .main {
    width: 100%;
 }
+
+.resultSection {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
