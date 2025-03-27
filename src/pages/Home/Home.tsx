@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy, memo, useCallback } from 'react';
-import { Table, TerminalSquare, LoaderCircle } from 'lucide-react';
+import { Table, TerminalSquare, LoaderCircle, PanelLeftClose, PanelLeftOpen } from 'lucide-react'; // Added icons
 import styles from './Home.module.css';
 
 const TableDisplay = lazy(() => import('../../components/TableDisplay/TableDisplay'));
@@ -23,14 +23,19 @@ const LoadingSpinner: React.FC = () => (
 
 const Home: React.FC = () => {
   const [selectedTableKey, setSelectedTableKey] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State for sidebar
   const selectedCsvUrl = selectedTableKey ? tableMappings[selectedTableKey] : null;
 
   const handleTableSelect = useCallback((tableKey: string) => {
-
     if (tableKey !== selectedTableKey) {
         setSelectedTableKey(tableKey);
     }
   }, [selectedTableKey]);
+
+  const toggleSidebar = useCallback(() => {
+    setIsSidebarOpen(prev => !prev);
+  }, []);
+
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>, tableKey: string) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -39,9 +44,19 @@ const Home: React.FC = () => {
     }
   };
 
+  const containerClass = `${styles.container} ${!isSidebarOpen ? styles.sidebarCollapsed : ''}`;
+
   return (
-    <div className={styles.container}>
+    <div className={containerClass}>
       <header className={styles.header}>
+        <button
+          onClick={toggleSidebar}
+          className={styles.sidebarToggleBtn}
+          aria-label={isSidebarOpen ? 'Collapse Sidebar' : 'Expand Sidebar'}
+        >
+          {isSidebarOpen ? <PanelLeftClose size={20} /> : <PanelLeftOpen size={20} />}
+        </button>
+
         <div className={styles.appTitleContainer}>
           <TerminalSquare size={24} className={styles.appIcon} />
           <h1 className={styles.appTitle}>SQL Runner</h1>
@@ -60,13 +75,13 @@ const Home: React.FC = () => {
                   key={tableKey}
                   className={`${styles.tableItem} ${selectedTableKey === tableKey ? styles.activeTableItem : ''}`}
                   onClick={() => handleTableSelect(tableKey)}
-                  onKeyDown={(e) => handleKeyDown(e, tableKey)} 
+                  onKeyDown={(e) => handleKeyDown(e, tableKey)}
                   role="button"
-                  tabIndex={0}
+                  tabIndex={isSidebarOpen ? 0 : -1}
                   aria-current={selectedTableKey === tableKey ? 'page' : undefined}
                 >
                   <Table size={16} className={styles.tableIcon} />
-                  {tableKey}
+                  <span className={styles.tableItemText}>{tableKey}</span>
                 </li>
               ))}
             </ul>
@@ -79,7 +94,7 @@ const Home: React.FC = () => {
                     <QueryEditor />
                 </Suspense>
             </section>
-            <section className={styles.resultSection} aria-live="polite" aria-busy={!!selectedCsvUrl && !document.getElementById('table-display')}> {/* Added ARIA attributes */}
+            <section className={styles.resultSection} aria-live="polite" aria-busy={!!selectedCsvUrl && !document.getElementById('table-display')}>
               {!selectedCsvUrl && (
                 <div className={styles.placeholder}>Please select a table from the sidebar to view data.</div>
               )}
