@@ -19,7 +19,7 @@ const tableFileMappings: Record<string, string> = {
   'data-large': '/data-large.csv',
 };
 
-const displayTableNames: string[] = ['Orders', 'Order_Details', 'Large_Data'];
+const displayTableNames: string[] = ['Orders', 'Order_Details', 'data-large'];
 
 const LoadingSpinner: React.FC = () => (
     <div className={styles.spinnerContainer}>
