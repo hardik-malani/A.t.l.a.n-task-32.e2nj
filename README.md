@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# Atlan SQL Runner (Frontend Simulation)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web-based application built with React, TypeScript, and Vite, designed to simulate the experience of running SQL queries and viewing results from local CSV files. It prioritizes performance, accessibility, and a clean user interface.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**[https://a-t-l-a-n-task-32-e2nj.vercel.app/](https://a-t-l-a-n-task-32-e2nj.vercel.app/)**
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Develop a highly optimized, web-based, dummy SQL query application that simulates the experience of running SQL queries and viewing results from local CSV files (`orders.csv`, `order_details.csv`, `data-large.csv`). The application mimics professional SQL tools without a real backend, focusing on frontend performance and user experience.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+*   **Query Editor:** A simple textarea accepts dummy SQL queries. An "Execute Query" button logs the input to the console. (Lazy-loaded, Memoized)
+*   **Table Selection Sidebar:** Lists available CSV datasets. Allows users to select a table, highlighting the active selection.
+*   **Virtualized Table Display:** Efficiently renders large CSV datasets using `react-window` with a sticky header and smooth scrolling. (Lazy-loaded with Suspense)
+*   **Asynchronous CSV Parsing:** Uses **Web Workers** to parse CSV files off the main thread, ensuring UI responsiveness.
+*   **Theme Toggle:** Switch between **Dark** and **Light** themes using React Context and CSS variables. (Lazy-loaded, Memoized)
+*   **Performance Optimized:** Targets and achieves high Lighthouse scores (e.g., 100 Performance) through code splitting, async loading, virtualization, and worker usage.
+*   **Accessibility:** Includes labels, and ARIA attributes for better screen reader support.
+*   **(Future Feature):** Right-click context menu for simulated table operations.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Architecture Diagram
+
+![Architecture Diagram](https://i.imgur.com/6kugYOC.png)
+
+## Technical Stack
+
+*   **Framework:** React 19+ (with TypeScript)
+*   **Build Tool:** Vite
+*   **Styling:** CSS Modules & Global CSS with CSS Variables
+*   **Data Parsing:** PapaParse (executed within a Web Worker)
+*   **UI Virtualization:** `react-window`
+*   **Icons:** `lucide-react`
+*   **Core Web APIs:** Web Workers API
+*   **React Features:**
+    *   Hooks (`useState`, `useEffect`, `useContext`, `useCallback`, `useMemo`)
+    *   Code Splitting (`React.lazy`, `Suspense`)
+    *   Memoization (`React.memo`)
+
+## Performance Optimizations & Metrics
+
+Achieving optimal performance was a primary goal, resulting in high Lighthouse scores (**100 Performance**) through several key techniques:
+
+*   **Web Workers for CSV Parsing:** Offloading heavy CSV parsing (`PapaParse`) to a background thread prevents the main UI thread from freezing, ensuring responsiveness even with large datasets.
+*   **Code Splitting (`React.lazy` & `Suspense`):** Components like `TableDisplay`, `QueryEditor`, and `ThemeToggle` are loaded only when needed, minimizing the initial JavaScript bundle size and drastically improving First Contentful Paint (FCP).
+*   **Asynchronous Font Loading:** Google Fonts CSS is loaded non-blockingly using `rel="preload"`, preventing font requests from delaying the initial render (FCP).
+*   **UI Virtualization (`react-window`):** Only the visible rows of the data table are rendered, enabling smooth scrolling and efficient handling of thousands of rows without performance degradation.
+*   **Memoization (`React.memo`, `useCallback`):** Components and callbacks are memoized to prevent unnecessary re-renders, optimizing updates after the initial load.
+*   **Deferred Initial Data Load:** The application starts without loading any table data. Data fetching and parsing are initiated only upon user interaction (selecting a table), ensuring the fastest possible initial paint.
+
+*(Achieved metrics based on Lighthouse run on production build)*
+*   **Performance Score:** **100**
+*   **First Contentful Paint (FCP):** **~0.4s**
+*   **Accessibility:** 91
+*   **Largest Contentful Paint (LCP):** 0.5 s
+*   **Total Blocking Time (TBT):** 0 ms
+
+## Author
+
+* Hardik Malani
