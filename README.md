@@ -19,7 +19,7 @@ Develop a highly optimized, web-based, dummy SQL query application that simulate
 *   **Theme Toggle:** Switch between **Dark** and **Light** themes using React Context and CSS variables. (Lazy-loaded, Memoized)
 *   **Performance Optimized:** Targets and achieves high Lighthouse scores (e.g., 100 Performance) through code splitting, async loading, virtualization, and worker usage.
 *   **Accessibility:** Includes labels, and ARIA attributes for better screen reader support.
-*   **(Future Feature):** Right-click context menu for simulated table operations.
+*   **Context-Menu:** Right-click context menu for simulated table operations.
 
 
 ## Architecture Diagram
@@ -57,6 +57,19 @@ Achieving optimal performance was a primary goal, resulting in high Lighthouse s
 *   **Accessibility:** 91
 *   **Largest Contentful Paint (LCP):** 0.5 s
 *   **Total Blocking Time (TBT):** 0 ms
+
+   **Performance Reports:**
+
+<div align="center" style="display: flex;">
+  <figure style="display: inline-block; margin: 10px;">
+    <img src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201605/nux21cbsasrh2amcnmum.png" alt="Lighthouse Performance Report" width="400"/>
+    <figcaption>Lighthouse</figcaption>
+  </figure>
+  <figure style="display: inline-block; margin: 10px;">
+    <img src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201606/yaxf6bdl1vljgf11xi6m.png" alt="GTmetrix Performance Report" width="400"/>
+    <figcaption>GTmetrix</figcaption>
+  </figure>
+</div>
 
 ## Author
 
