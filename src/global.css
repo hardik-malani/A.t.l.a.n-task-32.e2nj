@@ -1,16 +1,14 @@
-/* Add these styles to hide all scrollbars by default */
 * {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 *::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
 
-/* Add these styles for hover states */
 *:hover {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #333 #1a1a1a; /* Black thumb, dark track */
+  scrollbar-width: thin;
+  scrollbar-color: #333 #1a1a1a;
 }
 
 *:hover::-webkit-scrollbar {
@@ -33,9 +31,8 @@
   background: #555;
 }
 
-/* Light theme adjustments */
 body.light *:hover {
-  scrollbar-color: #999 #f0f0f0; /* Lighter grey thumb, very light track */
+  scrollbar-color: #999 #f0f0f0;
 }
 
 body.light *:hover::-webkit-scrollbar-track {
