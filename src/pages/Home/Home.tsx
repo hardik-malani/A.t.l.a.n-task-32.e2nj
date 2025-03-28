@@ -8,8 +8,8 @@ import type { QueryTab } from '../../components/QueryTabs/QueryTabs';
 const TableDisplay = lazy(() => import('../../components/TableDisplay/TableDisplay'));
 const ThemeToggle = memo(lazy(() => import('../../components/ThemeToggle/ThemeToggle')));
 const QueryEditor = memo(lazy(() => import('../../components/QueryEditor/QueryEditor')));
-const QueryTabs = lazy(() => import('../../components/QueryTabs'));
-const ContextMenu = lazy(() => import('../../components/ContextMenu'));
+const QueryTabs = lazy(() => import('../../components/QueryTabs/QueryTabs'));
+const ContextMenu = lazy(() => import('../../components/ContextMenu/ContextMenu'));
 
 // Mappings
 const tableFileMappings: Record<string, string> = {
