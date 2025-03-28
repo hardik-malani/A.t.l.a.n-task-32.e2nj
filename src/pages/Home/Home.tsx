@@ -23,7 +23,7 @@ const tableFileMappings: Record<string, string> = {
 const displayTableNames: string[] = ['Orders', 'Order_Details', 'data-large'];
 
 const LoadingSpinner: React.FC = () => (
-    <div className={styles.spinnerContainer}>
+    <div className={styles.spinnerContainer} role="status" aria-live="polite">
         <LoaderCircle size={32} className={styles.spinnerIcon} />
         <span>Loading...</span>
     </div>
@@ -162,8 +162,11 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (contextMenuVisible && containerRef.current && !containerRef.current.contains(event.target as Node)) {
-         closeContextMenu();
+      if (contextMenuVisible) {
+        const targetElement = event.target as Element;
+        if (!targetElement.closest(`.${styles.contextMenu}`)) {
+            closeContextMenu();
+        }
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -225,7 +228,7 @@ const Home: React.FC = () => {
         <aside className={styles.sidebar}>
             <h2 className={styles.sidebarTitle}>Tables</h2>
             <nav aria-label="Data tables">
-                <ul className={styles.tableList}>
+                <ul className={styles.tableList} role="list">
                 {displayTableNames.map((displayTableName) => (
                     <li
                         onContextMenu={(e) => handleContextMenu(e, displayTableName)}
@@ -233,7 +236,6 @@ const Home: React.FC = () => {
                         className={`${styles.tableItem} ${selectedDisplayTable === displayTableName ? styles.activeTableItem : ''}`}
                         onClick={() => handleTableSelect(displayTableName)}
                         onKeyDown={(e) => handleKeyDown(e, displayTableName)}
-                        role="button"
                         tabIndex={isSidebarOpen ? 0 : -1}
                         aria-current={selectedDisplayTable === displayTableName ? 'page' : undefined}
                     >
@@ -259,6 +261,7 @@ const Home: React.FC = () => {
                  {activeTab ? (
                     <QueryEditor
                       key={activeTab.id}
+                      editorId={`query-editor-${activeTab.id}`}
                       value={activeTab.query}
                       onChange={(newQuery) => updateTabQuery(activeTab.id, newQuery)}
                       onExecute={handleExecuteQuery}

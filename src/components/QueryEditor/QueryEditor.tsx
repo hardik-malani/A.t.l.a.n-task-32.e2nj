@@ -6,10 +6,10 @@ interface QueryEditorProps {
   value: string;
   onChange: (newQuery: string) => void;
   onExecute: (query: string) => void;
+  editorId: string;
 }
 
-const QueryEditorComponent: React.FC<QueryEditorProps> = ({ value, onChange, onExecute }) => {
-  const editorId = 'sql-query-editor';
+const QueryEditorComponent: React.FC<QueryEditorProps> = ({ value, onChange, onExecute, editorId }) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(event.target.value);
@@ -20,17 +20,17 @@ const QueryEditorComponent: React.FC<QueryEditorProps> = ({ value, onChange, onE
   };
 
   return (
-    <div className={styles.container}>
-      <label htmlFor={editorId} className={styles.visuallyHidden} id="query-editor-label">
+    <div className={styles.container} id={editorId} role="tabpanel" aria-labelledby={`tab-button-${editorId}`}>
+      <label htmlFor={`${editorId}-textarea`} className={styles.visuallyHidden} id={`${editorId}-label`}>
         SQL Query Input
       </label>
       <textarea
-        id={editorId}
+        id={`${editorId}-textarea`}
         className={styles.textarea}
         value={value}
         onChange={handleChange}
         placeholder="Write your SQL query here..."
-        aria-label="SQL Query Input"
+        aria-labelledby={`${editorId}-label`}
       />
       <button className={styles.button} onClick={handleExecute}>
         <Play size={16} />

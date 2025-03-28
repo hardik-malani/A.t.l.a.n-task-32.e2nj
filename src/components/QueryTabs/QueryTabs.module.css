@@ -1,15 +1,24 @@
+.tabsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 8px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+}
+
+
 .tabsContainer {
   display: flex;
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background-color: var(--bg-primary);
-  border-bottom: 1px solid var(--border-color);
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  flex-grow: 1;
 }
 .tabsContainer::-webkit-scrollbar {
   height: 4px;
@@ -32,7 +41,7 @@
   padding: 6px 12px;
   font-size: 0.85rem;
   border: 1px solid transparent;
-  border-bottom: none;
+  border-bottom: none; /* Keep this */
   border-radius: 4px 4px 0 0;
   cursor: pointer;
   background-color: var(--bg-secondary);
@@ -51,6 +60,8 @@
   color: var(--text-primary);
   font-weight: 500;
   border-color: var(--border-color);
+  position: relative;
+  bottom: -1px;
 }
 
 .closeButton {
@@ -71,13 +82,14 @@
 
 .addButton {
   padding: 4px;
-  margin-left: 4px;
   line-height: 1;
   background: none;
   border: 1px dashed var(--border-color);
   color: var(--text-secondary);
   border-radius: 4px;
   cursor: pointer;
+  flex-shrink: 0;
+  margin-bottom: 1px;
 }
 
 .addButton:hover {
