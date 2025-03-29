@@ -24,7 +24,7 @@ Develop a highly optimized, web-based, dummy SQL query application that simulate
 
 ## Architecture Diagram
 
-![Architecture Diagram](https://i.imgur.com/6kugYOC.png)
+![Architecture Diagram](https://res.cloudinary.com/daxpumkma/image/upload/v1743239044/r1bprs4syfcx6rmnfcjx.png)
 
 ## Technical Stack
 
@@ -58,17 +58,30 @@ Achieving optimal performance was a primary goal, resulting in high Lighthouse s
 *   **Largest Contentful Paint (LCP):** 0.5 s
 *   **Total Blocking Time (TBT):** 0 ms
 
-   **Performance Reports:**
 
-<div align="center" style="display: flex;">
-  <figure style="display: inline-block; margin: 10px;">
-    <img src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201605/nux21cbsasrh2amcnmum.png" alt="Lighthouse Performance Report" width="400"/>
-    <figcaption>Lighthouse</figcaption>
-  </figure>
-  <figure style="display: inline-block; margin: 10px;">
-    <img src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201606/yaxf6bdl1vljgf11xi6m.png" alt="GTmetrix Performance Report" width="400"/>
-    <figcaption>GTmetrix</figcaption>
-  </figure>
+## Performance Reports:
+
+<div align="center">
+  <div style="display: inline-block; text-align: center; margin: 10px; max-width: 400px; vertical-align: top;">
+    <img
+      src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201605/nux21cbsasrh2amcnmum.png"
+      alt="Lighthouse Performance Report"
+      width="400"
+      style="max-width: 100%; height: auto;"
+      aria-label="Lighthouse Performance Report"
+    />
+    <p style="margin: 5px 0 0 0;">Lighthouse</p>
+  </div>
+  <div style="display: inline-block; text-align: center; margin: 10px; max-width: 400px; vertical-align: top;">
+    <img
+      src="https://res.cloudinary.com/dbm856uys/image/upload/v1743201606/yaxf6bdl1vljgf11xi6m.png"
+      alt="GTmetrix Performance Report"
+      width="400"
+      style="max-width: 100%; height: auto;"
+      aria-label="GTmetrix Performance Report"
+    />
+    <p style="margin: 5px 0 0 0;">GTmetrix</p>
+  </div>
 </div>
 
 ## Author
