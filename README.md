@@ -1,10 +1,6 @@
-# Atlan SQL Runner (Frontend Simulation)
+# SQL Runner (Frontend Simulation)
 
 This project is a web-based application built with React, TypeScript, and Vite, designed to simulate the experience of running SQL queries and viewing results from local CSV files. It prioritizes performance, accessibility, and a clean user interface.
-
-## Live Demo
-
-**[https://a-t-l-a-n-task-32-e2nj.vercel.app/](https://a-t-l-a-n-task-32-e2nj.vercel.app/)**
 
 ## Overview
 
